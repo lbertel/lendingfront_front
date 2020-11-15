@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import {saveLoan} from "../helpers/saveLoan";
 
 export const FormAddLoan = ({ setLoanStatus }) => {
 
@@ -43,15 +44,8 @@ export const FormAddLoan = ({ setLoanStatus }) => {
         event.preventDefault();
         disableButton()
 
-        fetch("http://localhost:3001/api/loan/create/", {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(formState), // data can be `string` or {object}!
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => setLoanStatus(response.loan_decision));
+        saveLoan( formState )
+            .then( x => setLoanStatus(x))
 
         enabledButton()
     }

@@ -10,7 +10,7 @@ export const LoanApp = () => {
             <h2>Loan App</h2>
             <hr/>
             <FormAddLoan setLoanStatus={ setLoanStatus } />
-            Loan Status: {loanStatus}
+            Loan Status: <strong>{loanStatus}</strong>
         </>
     )
 }
